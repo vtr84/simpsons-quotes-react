@@ -1,5 +1,6 @@
 import './App.css';
 import Quote from './components/Quote'
+import LoadingSpinner from './components/LoadingSpinner';
 import {useState} from 'react'
 import axios from 'axios'
 
@@ -7,15 +8,20 @@ const initialQuote = [{"quote":"Inflammable means flammable? What a country!","c
 
 function App() {
   const [quote, setQuote] = useState(...initialQuote)
+  const [loading, setLoading] = useState(false)
   const fetchQuote = () => {
     axios.get('https://simpsons-quotes-api.herokuapp.com/quotes')
-    .then((response)=> setQuote(response.data[0])) 
+    .then((response)=> {
+      setLoading(false)
+      setQuote(response.data[0])}) 
     .catch((error) => alert(error))
   }
   return (
     <div className='container'>
-      <Quote quote={quote}/>
-      <button onClick={fetchQuote}>Fetch a new Quote</button>
+      
+      <button onClick={()=>{setLoading(true)
+      fetchQuote()}}>Fetch a new Quote</button>
+      {loading ? <LoadingSpinner /> : <Quote quote={quote}/>}
     </div>
   );
 }
