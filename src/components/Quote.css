@@ -1,0 +1,33 @@
+.img {
+    height: 200px;
+    margin: 20px;
+}
+
+.quote-display {
+    width: 450px;
+    display: flex;
+    border: 1px cyan solid;
+    border-radius: 20px;
+    box-shadow:  8px 8px 8px rgba(0, 0, 255, .2);
+    justify-content: space-between;
+}
+
+.right {
+    flex-direction: row-reverse;
+}
+
+.quote-div {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+}
+
+.quote-text {
+    font-style: italic;
+    padding: 20px 20px 0px 20px;
+}
+
+.quote-character {
+    font-size: small;
+    padding: 0px 20px 20px 20px;
+}
